@@ -1,24 +1,46 @@
 import logo from './logo.svg';
-import './App.css';
+import './css/sb-admin-2.css';
+import Dashboard from './Dashboard';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Users from './Users';
+import Products from './Products';
+import Login from './Login';
+import Portal from './Portal';
+import Createuser from './Createuser';
+import Userview from './Userview';
+import Edituser from './Edituser';
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/portal" element={<Portal />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="users" element={<Users />} />
+          <Route path="users/:userid" element={<Userview />} />
+          <Route path="user/edit/:userid" element={<Edituser />} />
+          <Route path="products" element={<Products />} />
+          <Route path="create-users" element={<Createuser />} />
+          
+          
+
+        </Route>
+
+
+      </Routes>
+
+
+    </BrowserRouter>
+
   );
 }
 
